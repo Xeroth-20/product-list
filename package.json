@@ -1,10 +1,10 @@
 {
   "name": "product-list",
   "version": "1.0.0",
-  "description": "\"An application that uses express\"",
+  "description": "An application that uses express",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon src/app.js"
   },
   "keywords": [
     "express"
@@ -12,6 +12,12 @@
   "author": "Jhonatan Castillo",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "bootstrap": "^4.5.0",
+    "ejs": "^3.1.3",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   }
 }
