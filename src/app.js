@@ -15,12 +15,17 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 /* middlewares */
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }))
 const logger = require('morgan');
 app.use(logger('dev'));
 
 /* setting routes */
-const routerIndex = require('./routes/index');
-app.use('/', routerIndex);
+const indexRouter = require('./routes/index');
+app.use('/', indexRouter);
+
+const productListRouter = require('./routes/product-list');
+app.use('/product-list', productListRouter);
 
 /* listen */
 app.listen(app.get('port'), () => {

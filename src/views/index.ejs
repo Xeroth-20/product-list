@@ -4,20 +4,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Bootstrap -->
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+
+    <%- include('shared/include-css') %> 
 
     <title><%= title %></title>
 </head>
-    
+
 <body>
-    <div class="root">
-        <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
-            <a href="/" class="navbar-brand">
-                Product list
-            </a>
-        </nav>
+    <div class="root" >
+        <%- include('shared/navbar') %>
+        <div class="main my-4">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="jumbotron text-light border bg-primary">
+                            <h1 class="display-4">
+                                Welcome!
+                            </h1>
+                            <p>
+                                This is an application that uses express.
+                            </p>
+                            <a class="btn btn-light" href="/product-list">
+                                Manage product list
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 
