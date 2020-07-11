@@ -56,5 +56,9 @@
 
 .jx-modal-content {
     background-color: #fff;
-    min-width: 35%;
+    min-width: 40%;
+}
+
+.hide {
+    display: none;
 }

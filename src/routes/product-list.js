@@ -2,19 +2,32 @@ const express = require('express');
 const productListRouter = express.Router();
 
 /* db */
-const db = require('./db/firebase');
-db.addProduct('asdsa');
-/* routes */
-productListRouter.get('/', (req, res) => {
-    res.render('product-list', { title: 'Commerce' });
+const db = require('./database/firebase');
+db.getProductList({
+    data: (data) => console.log(data),
+    error: (err) => console.log(err)
 });
 
+/* routes */
 productListRouter.route('/')
     .get((req, res) => {
-        res.render('product-list', { title: 'Commerce' });
+        db.getProductList({
+            data: (data) => {
+                res.render('product-list', {
+                    title: 'Commerce',
+                    productList: data
+                });
+            },
+            error: (err) => {
+                res.send(err);
+            }
+        });
     })
     .post((req, res) => {
-        res.render('product-list', { title: 'Commerce' });
+        db.addProduct({
+            data: (data) => res.redirect('/product-list'),
+            error: (err) => res.send(err)
+        }, req.body);
     });
 
 module.exports = productListRouter;

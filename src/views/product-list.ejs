@@ -26,17 +26,21 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <% const products = Object.values(productList) %>
+                        <% for(let i = 0; i < products.length; i ++) { %>
                         <tr>
-                            <th scope="row">1</th>
-                            <td>AAA</td>
-                            <td>AAA</td>
-                            <td>AAA</td>
+                            <th><%= i + 1 %></th>
+                            <td><%= products[i].name %></td>
+                            <td><%= products[i].description %></td>
+                            <td><%= products[i].stock %></td>
                         </tr>
+                        <% } %>
                     </tbody>
                 </table>
             </div>
-            <div class="btn-add btn-primary" role="button"></div>
-            <div class="jx-modal">
+            <div class="btn-add btn-primary btn-modal" data-button="open" data-target="product-modal" role="button">
+            </div>
+            <div id="product-modal" class="jx-modal hide">
                 <div class="jx-modal-content mx-auto border rounded p-3">
                     <form id="product-form" method="POST">
                         <h3>Add a new product</h3>
@@ -55,11 +59,26 @@
                             <input placeholder="Enter stock number" id="stock" name="stock" type="text"
                                 class="form-control">
                         </div>
-                        <button type="submit" class="btn btn-block btn-primary">Add product</button>
+                        <div class="form-row">
+                            <div class="col-8">
+                                <button type="submit" class="btn btn-block btn-primary">
+                                    Add product
+                                </button>
+                            </div>
+                            <div class="col-4">
+                                <button type="button" class="btn btn-block btn-outline-danger btn-modal"
+                                    data-button="close" data-target="product-modal">
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
+
+        <!-- Scripts -->
+        <script type="text/javascript" src="js/modal.js"></script>
 </body>
 
 </html>
